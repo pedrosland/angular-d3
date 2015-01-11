@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @ngdoc service
+ * @ngdoc value
  * @name d3.d3
  * @module d3
  * @description

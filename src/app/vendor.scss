@@ -1,1 +1,29 @@
 @import '../../bower_components/foundation/scss/foundation';
+
+
+// TODO: find out the right way of getting variables/mixins in index.scss!
+
+.d3a-line-graph{
+
+  .axis text{
+    font-size: 10px;
+  }
+
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .line {
+    fill: none;
+    stroke: $primary-color;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+  }
+
+  line{
+
+  }
+
+}

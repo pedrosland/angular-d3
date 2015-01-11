@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="large-12 large-text-center columns">
+    <div class="panel">
+      <h1>D3 Angular - Line Graph</h1>
+      <p><button ng-click="addGraph()">Click here</button> to add a new graph</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns" ng-repeat="data in graphData">
+    <d3a-line-graph data="data"></d3a-line-graph>
+  </div>
+</div>
