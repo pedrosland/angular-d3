@@ -12,7 +12,7 @@ angular.module('d3Angular')
           elem.addClass('d3a-line-graph');
 
           margin = {top: 20, right: 20, bottom: 30, left: 50};
-          width = (attr.width || 300) - margin.left - margin.right;
+          width = (attr.width || elem.parent().width()) - margin.left - margin.right;
           height = (attr.height || 200) - margin.top - margin.bottom;
 
           svg = d3.select(elem[0]).append('svg')
