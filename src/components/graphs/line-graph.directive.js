@@ -2,11 +2,12 @@
 
 angular.module('d3Angular')
   .directive('d3aLineGraph', function(d3){
+
     return {
       restrict: 'E',
       link: function(scope, elem, attr){
-        var margin, width, height;
-        var x, y, xAxis, yAxis, line, svg;
+        var margin, width, height, svg;
+        var x, y, xAxis, yAxis, line, xAxisG, yAxisG, linePath;
 
         function initElem() {
           elem.addClass('d3a-line-graph');
@@ -47,19 +48,25 @@ angular.module('d3Angular')
           x.domain([0, data.length]);
           y.domain([0, d3.max(data)]);
 
-          svg.append('g')
-            .attr('class', 'axis x-axis')
-            .attr('transform', 'translate(0,' + height + ')')
-            .call(xAxis);
+          if(xAxisG) {
+            linePath
+              .datum(data)
+              .attr('d', line);
+          }else{
+            xAxisG = svg.append('g')
+              .attr('class', 'axis x-axis')
+              .attr('transform', 'translate(0,' + height + ')')
+              .call(xAxis);
 
-          svg.append('g')
-            .attr('class', 'axis y-axis')
-            .call(yAxis);
+            yAxisG = svg.append('g')
+              .attr('class', 'axis y-axis')
+              .call(yAxis);
 
-          svg.append('path')
-            .datum(data)
-            .attr('class', 'line')
-            .attr('d', line);
+            linePath = svg.append('path')
+              .datum(data)
+              .attr('class', 'line')
+              .attr('d', line);
+          }
         }
 
         initElem();

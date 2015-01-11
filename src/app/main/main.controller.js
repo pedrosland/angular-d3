@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('d3Angular')
-  .controller('MainCtrl', function ($scope, d3) {
+  .controller('MainCtrl', function ($scope, $interval, d3) {
     function addGraph(){
       var max = Math.round(Math.random() * 100);
 
@@ -18,4 +18,10 @@ angular.module('d3Angular')
     $scope.addGraph = addGraph;
 
     addGraph();
+
+    $interval(function(){
+      $scope.graphData.forEach(function(graph){
+        graph.data.push(graph.data.shift());
+      });
+    }, 1000);
   });
