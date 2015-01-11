@@ -1,17 +1,23 @@
-/**
- * This file uses the Page Object pattern to define the main page for tests
- * https://docs.google.com/presentation/d/1B6manhG0zEXkC-H-tPo2vwU06JhL8w9-XCF9oehXzAQ
- */
-
 'use strict';
 
-var MainPage = function() {
+function MainPage() {
+  this.url = 'http://localhost:3000/';
+  this.goTo = function goTo(){
+    browser.get(this.url);
+  };
 
-  this.jumbEl = element(by.css('.panel'));
+  this.graphs = element.all(by.css('.d3a-line-graph'));
+  this.linePaths = element.all(by.css('.d3a-line-graph .line'));
 
-  this.h1El = this.jumbEl.element(by.css('h1'));
-  this.imgEl = this.jumbEl.element(by.css('img'));
-  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in awesomeThings'));
-};
+  this.addButton = element(by.css('.add-graph'));
+
+  this.addGraph = function addGraph(){
+    this.addButton.click();
+  };
+
+  this.getLinePath = function getLinePath(eq){
+    return this.linePaths.get(eq);
+  }
+}
 
 module.exports = new MainPage();

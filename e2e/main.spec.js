@@ -1,21 +1,26 @@
 'use strict';
 
-describe('The main view', function () {
+describe('The main page', function () {
   var page;
 
   beforeEach(function () {
-    browser.get('http://localhost:3000/index.html');
     page = require('./main.po');
+    page.goTo();
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it('should display one graph to begin', function() {
+    expect(page.graphs.count()).toBe(1);
+
+    expect(page.getLinePath(0).getAttribute('d')).not.toEqual(null);
   });
 
-  it('list more than 5 awesome things', function () {
-    expect(page.thumbnailEls.count()).toBeGreaterThan(5);
+  it('should add another graph when clicked', function () {
+    page.addGraph();
+
+    expect(page.graphs.count()).toBe(2);
+
+    // The graphs should not have the same data
+    expect(page.getLinePath(0).getAttribute('d')).not.toBe(page.getLinePath(1).getAttribute('d'));
   });
 
 });
