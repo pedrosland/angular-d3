@@ -6,6 +6,8 @@ var $ = require('gulp-load-plugins')();
 
 var browserSync = require('browser-sync');
 
+var argv = require('yargs').argv;
+
 // Downloads the selenium webdriver
 gulp.task('webdriver-update', $.protractor.webdriver_update);
 
@@ -19,6 +21,7 @@ function runProtractor (done) {
   gulp.src(testFiles)
     .pipe($.protractor.protractor({
       configFile: 'protractor.conf.js',
+      args: argv.browser ? ['--browser', argv.browser]: []
     }))
     .on('error', function (err) {
       // Make sure failed tests cause gulp to exit non-zero
