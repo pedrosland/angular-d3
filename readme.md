@@ -1,4 +1,4 @@
-# D3 Angular (Line Graph)
+# D3 Angular (Line Graph) [![Build Status](https://travis-ci.org/pedrosland/angular-d3.svg?branch=master)](https://travis-ci.org/pedrosland/angular-d3)
 
 This is a test project where I reminded myself how to use D3 - and how much I've forgotten since I last used it. :)
 
