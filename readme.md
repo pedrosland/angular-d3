@@ -4,6 +4,8 @@ This is a test project where I reminded myself how to use D3 - and how much I've
 
 ## Installing
 
+I assume that you already have a recent version of node.js and npm installed on your machine. You will need npm >= 2.1.5 to install some of the build tools properly. It will probably still work for you if you do not have a recent version of npm but you may need to run `npm install` a couple of times. You can upgrade your npm version by running `npm update -g npm`.
+
 To install the app and dependencies:
 
     npm install && bower install
