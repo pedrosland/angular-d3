@@ -22,7 +22,7 @@ gulp.task('injector:css:preprocessor', function () {
     .pipe($.inject(gulp.src([
         'src/{app,components}/**/*.scss',
         '!src/app/index.scss',
-        '!src/app/vendor.scss' 
+        '!src/app/vendor.scss'
       ], {read: false}), {
       transform: function(filePath) {
         filePath = filePath.replace('src/app/', '');
@@ -137,8 +137,14 @@ gulp.task('misc', function () {
     .pipe(gulp.dest('dist/'));
 });
 
+// Note that this should use rev()
+gulp.task('workers', function () {
+  return gulp.src('src/workers/**/*.js', {base: 'src/'})
+    .pipe(gulp.dest('dist/'));
+});
+
 gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['html', 'images', 'fonts', 'misc', 'workers']);
