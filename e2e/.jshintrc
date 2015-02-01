@@ -20,7 +20,6 @@
   "white": true,
   "validthis": true,
   "globals": {
-    "angular": false,
     // Angular Mocks
     "inject": false,
     // Jasmine
@@ -30,6 +29,11 @@
     "beforeEach": false,
     "after": false,
     "afterEach": false,
-    "expect": false
+    "expect": false,
+    // Protractor
+    "browser": false,
+    "element": false,
+    "by": false,
+    "module": false
   }
 }

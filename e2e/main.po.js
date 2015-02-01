@@ -17,7 +17,7 @@ function MainPage() {
 
   this.getLinePath = function getLinePath(eq){
     return this.linePaths.get(eq);
-  }
+  };
 }
 
 module.exports = new MainPage();

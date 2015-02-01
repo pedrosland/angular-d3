@@ -9,9 +9,11 @@ var browserSync = require('browser-sync');
 var argv = require('yargs').argv;
 
 // Downloads the selenium webdriver
+/* jshint camelcase: false */
 gulp.task('webdriver-update', $.protractor.webdriver_update);
 
 gulp.task('webdriver-standalone', $.protractor.webdriver_standalone);
+/* jshint camelcase: true */
 
 function runProtractor (done) {
   var testFiles = [

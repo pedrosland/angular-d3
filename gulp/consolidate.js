@@ -5,7 +5,7 @@ var rename = require('gulp-rename');
 var gulp = require('gulp');
 
 var engines = [
-  
+
 ];
 
 function buildTemplates(engine, src, dest) {
@@ -13,13 +13,6 @@ function buildTemplates(engine, src, dest) {
     .pipe(consolidate.apply(this, engine))
     .pipe(rename(function (path) {path.extname = '.html';}))
     .pipe(gulp.dest(dest));
-}
-
-function buildTaskFunction(engine) {
-  return function() {
-    buildTemplates(engine, 'src/app/**/*.jade', '.tmp/app/');
-    buildTemplates(engine, 'src/components/**/*.jade', '.tmp/components/');
-  };
 }
 
 var tasks = [];
