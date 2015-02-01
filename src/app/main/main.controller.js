@@ -3,21 +3,27 @@
 angular.module('d3Angular')
   .controller('MainCtrl', function ($scope, d3aResource) {
     function addGraph(){
-      var len = $scope.graphData.push({
+      $scope.graphData.push({
         title: 'Monday',
         data: d3aResource.generateData()
       });
+    }
 
-      d3aResource.setDataNeeded(len);
+    function addGraphs(number){
+      for(var i=0; i<number; i++){
+        addGraph();
+      }
+
+      d3aResource.setDataNeeded($scope.graphData.length);
     }
 
     $scope.graphData = [];
 
-    $scope.addGraph = addGraph;
+    $scope.addGraphs = addGraphs;
 
     d3aResource.startWorker();
 
-    addGraph();
+    addGraphs(3);
 
     $scope.$on('dataGenerated', function(e, data){
       $scope.$applyAsync(function() {

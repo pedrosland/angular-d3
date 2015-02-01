@@ -2,7 +2,11 @@
   <div class="large-12 large-text-center columns">
     <div class="panel">
       <h1>D3 Angular - Line Graph</h1>
-      <p><button class="add-graph" ng-click="addGraph()">Click here</button> to add a new graph</p>
+      <p>
+        <button class="add-graph" ng-click="addGraphs(1)">Add 1 graph</button>
+        <button class="add-graph" ng-click="addGraphs(10)">Add 10 graphs</button>
+        Number: {{graphData.length}}
+      </p>
     </div>
   </div>
 </div>

@@ -73,6 +73,7 @@ angular.module('d3Angular')
         initD3();
 
         scope.$watchCollection(attr.data, function(oldVal, newVal){
+          // If I used requestAnimationFrame, perhaps I could improve scrolling performance?
           initData(newVal.data);
         });
       }
