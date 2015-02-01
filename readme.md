@@ -32,6 +32,16 @@ To run Protractor e2e tests:
 
     gulp protractor
 
+## Building
+
+To prepare the project for deployment to production - if you really want to - build the minified, static, ngAnnotate'ed version then run:
+
+    gulp dist
+
+You can also run the e2e tests on the minified version:
+
+    gulp protractor:dist
+
 ## Comments
 
 * Although I didn't write the gulp files myself, I'd have used something similar but this just saved a lot of time. If you feel that I cheated then you can note that I modified karma and gulp files so that unit tests can run directly from karma. I've used many of the parts of this gulp build in other projects.
