@@ -72,9 +72,9 @@ angular.module('d3Angular')
         initElem();
         initD3();
 
-        scope.$watch(attr.data, function(oldVal, newVal){
+        scope.$watchCollection(attr.data, function(oldVal, newVal){
           initData(newVal.data);
-        }, true);
+        });
       }
     };
   });

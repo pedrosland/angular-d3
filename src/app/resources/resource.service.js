@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('d3a.resources', ['d3'])
-  .factory('d3aResource', function($interval, d3){
+  .factory('d3aResource', function($rootScope, $interval, d3){
+
+    var worker;
 
     return {
       generateData: function generateData() {
@@ -12,12 +14,16 @@ angular.module('d3a.resources', ['d3'])
         });
       },
 
-      updateData: function updateData(graphData) {
-        $interval(function () {
-          graphData.forEach(function (graph) {
-            graph.data.push(graph.data.shift());
-          });
-        }, 1000);
+      startWorker: function startWorker(){
+        worker = new Worker('/workers/generate-data.js');
+
+        worker.onmessage = function(e) {
+          $rootScope.$broadcast('dataGenerated', e.data);
+        };
+      },
+
+      setDataNeeded: function(dataNeeded){
+        worker.postMessage(dataNeeded);
       }
     };
 
